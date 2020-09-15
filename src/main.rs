@@ -24,7 +24,7 @@ async fn index_handler(_req: Request<()>) -> Result<Response, tide::Error> {
 
 async fn docs_handler(req: Request<()>) -> Result<Response, tide::Error> {
     let filename = req.param("path").unwrap_or("index".to_owned());
-    let path: PathBuf = [".", format!("{}.md", filename).as_ref()].iter().collect();
+    let path: PathBuf = ["docs", format!("{}.md", filename).as_ref()].iter().collect();
     if !path.exists().await {
         return Ok(Response::builder(404).body("Doc not found").build());
     }
