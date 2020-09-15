@@ -46,6 +46,7 @@ async fn main() -> Result<(), std::io::Error> {
     app.at("/").get(index_handler);
     app.at("/docs").get(docs_handler);
     app.at("/docs/:path").get(docs_handler);
+    app.at("/static").serve_dir("static/")?;
     app.with(driftwood::DevLogger);
     app.listen("127.0.0.1:8080").await?;
     Ok(())
