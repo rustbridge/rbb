@@ -22,6 +22,7 @@ async fn main() -> Result<(), std::io::Error> {
     app.at("/docs/:path").get(docs::docs_handler);
     app.at("/static").serve_dir("static/")?;
     app.with(driftwood::DevLogger);
+    println!("rbb is starting at http://localhost:8080");
     app.listen("127.0.0.1:8080").await?;
     Ok(())
 }
