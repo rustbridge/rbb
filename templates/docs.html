@@ -1,3 +1,10 @@
 <h1>Docs</h1>
 
+<div>
+  Sitemap:
+  {% for site in sitemap.entries %}
+  <li>{{ site }}</li>
+  {% endfor %}
+</div>
+
 {{ content|safe }}
