@@ -1,3 +1,4 @@
+use dotenv::dotenv;
 use tide::Request;
 
 mod templates;
@@ -17,6 +18,9 @@ impl<T: Clone + Send + Sync + 'static> tide::Middleware<T> for SitemapProvider {
 
 #[async_std::main]
 async fn main() -> Result<(), std::io::Error> {
+    dotenv().ok();
+    templates::common::preflight_env_check();
+
     let sitemap = templates::docs::construct_sitemap()?;
     println!("Initialized doc sitemap with {} entries", &sitemap.num_entries);
     let mut app = tide::new();
