@@ -10,6 +10,6 @@ struct IndexTemplate<'a> {
 }
 
 pub async fn index_handler(_req: Request<()>) -> Result<Response, tide::Error> {
-    let res: Response = IndexTemplate { name: "marisa", common: common::gen_common() }.into();
+    let res: Response = IndexTemplate { name: "RustBridge Berlin", common: common::gen_common() }.into();
     Ok(res)
 }
