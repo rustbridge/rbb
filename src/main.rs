@@ -1,22 +1,10 @@
-use askama::Template;
-use tide::{Request, Response};
+use tide::Request;
 
-mod docs;
-
-#[derive(Template)]
-#[template(path = "index.html")]
-struct IndexTemplate<'a> {
-    name: &'a str,
-}
-
-async fn index_handler(_req: Request<()>) -> Result<Response, tide::Error> {
-    let res: Response = IndexTemplate { name: "marisa" }.into();
-    Ok(res)
-}
+mod templates;
 
 #[derive(Debug, Clone)]
 pub struct SitemapProvider {
-    sitemap: docs::Sitemap,
+    sitemap: templates::docs::Sitemap,
 }
 
 #[tide::utils::async_trait]
@@ -29,12 +17,12 @@ impl<T: Clone + Send + Sync + 'static> tide::Middleware<T> for SitemapProvider {
 
 #[async_std::main]
 async fn main() -> Result<(), std::io::Error> {
-    let sitemap = docs::construct_sitemap()?;
+    let sitemap = templates::docs::construct_sitemap()?;
     println!("Initialized doc sitemap with {} entries", &sitemap.num_entries);
     let mut app = tide::new();
-    app.at("/").get(index_handler);
-    app.at("/docs").get(docs::docs_handler);
-    app.at("/docs/:path").get(docs::docs_handler);
+    app.at("/").get(templates::index_handler);
+    app.at("/docs").get(templates::docs_handler);
+    app.at("/docs/:path").get(templates::docs_handler);
     app.at("/static").serve_dir("static/")?;
     app.with(driftwood::DevLogger);
     app.with(SitemapProvider { sitemap });
