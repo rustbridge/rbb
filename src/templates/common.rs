@@ -9,9 +9,11 @@ pub struct Common {
   pub canonical_url: String,
   pub contact: Vec<LinkPair>,
   pub resources: Vec<LinkPair>,
+  pub chapters: Vec<LinkPair>,
 }
 
 pub fn gen_common() -> Common {
+  // TODO Source these from somewhere more accessible
   let contact = vec![
     LinkPair {
       link: "https://twitter.com/rustbridge".to_string(),
@@ -40,11 +42,18 @@ pub fn gen_common() -> Common {
       name: "Rusty Snake Book".to_string()
     },
   ];
+  let chapters = vec![
+    LinkPair {
+      link: "https://berlin.rustbridge.com".to_string(),
+      name: "RustBridge Berlin".to_string(),
+    },
+  ];
 
   Common {
     canonical_url: env::var("RBB_CANONICAL_URL").unwrap(),
     contact,
     resources, 
+    chapters,
   }
 }
 

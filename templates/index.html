@@ -1,5 +1,31 @@
 {% extends "layout.html" %}
 
 {% block content %}
-Hi {{ name }}!
+<div class="mw8 center pa2 ph3-ns">
+  <h1 class="mt0 f1 lh-title">We're here to teach you Rust!</h1>
+  <p class="f2 lh-copy">
+    RustBridge is a workshop focused on getting underrepresented people with a
+    background in another programming language to learn Rust and join the community.
+  </p>
+
+  <h2 class="mt5 f2 lh-title">About RustBridge</h2>
+  <p class="f4 lh-copy">
+    RustBridge workshops are held all around the world, and specifically targeted towards underrepresented groups in technology. The first RustBridge workshop was held at 
+    <a href="https://2016.rustfest.eu">RustFest Berlin</a>,
+    and since then, it’s become a tradition of sorts to hold a workshop at every Rust conference thereafter. Independently, RustBridge workshops have been held in 5 continents.
+  </p>
+
+  <h2 class="mt5 f2 lh-title">RustBridge near you?</h2>
+  <p class="f4 lh-copy">
+    RustBridge is currently transitioning to organizing in chapters. These are groups of people based in a particular area.
+  </p>
+
+  {% include "_chapter_list.html" %}
+
+  <p class="f4 lh-copy">
+    See our documentation on
+    <a href="/docs/organizing/chapter">organizing a chapter</a>
+    for more information around starting and managing your own chapter.
+  </p>
+</div>
 {% endblock %}
