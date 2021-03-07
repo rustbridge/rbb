@@ -6,21 +6,39 @@
 
     <title>{{ name }}</title>
     <meta name="author" content="RustBridge" />
-    <meta name="description" content="RustBridge workshops focus on getting underrepresented people with a background in another programming language to learn Rust and join the community.">
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content=""/>
+    <meta
+      name="description"
+      content="RustBridge workshops focus on getting underrepresented people with a background in another programming language to learn Rust and join the community."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="" />
 
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
-    <link rel="stylesheet" href="{{ common.canonical_url }}/static/css/main.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ common.canonical_url }}/static/css/main.css"
+    />
 
-    <link rel="shortcut icon" type="image/png" href="{{ common.canonical_url }}/assets/favicon.png">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{{ common.canonical_url }}/assets/favicon.png"
+    />
   </head>
   <body>
     <header class="pv4 bt bw3 bg-near-white shadow-2 mb5 header">
       <div class="mw8 ph2 center">
         <h1 class="f-headline lh-solid mv0 vampiro header__title">
           <a href="{{ common.canonical_url }}/" class="">
-            <img src="{{ common.canonical_url }}/static/img/RustBridge_clean.png" alt="RustBridge" width="250" class="v-mid bm-darken logo">
+            <img
+              src="{{ common.canonical_url }}/static/img/RustBridge_clean.png"
+              alt="RustBridge"
+              width="250"
+              class="v-mid bm-darken logo"
+            />
             <span class="v-mid ml6 dib">RustBridge</span>
           </a>
         </h1>
@@ -28,15 +46,13 @@
     </header>
 
     <main class="">
-      <div class="mw8 center pa2 ph3-ns">
-        {% block content %}{% endblock %}
-      </div>
+      <div class="mw8 center pa2 ph3-ns">{% block content %}{% endblock %}</div>
     </main>
 
     <footer class="mt4 pt3 bg-near-white shadow-2">
       <div class="mw8 pa2 ph3-ns center footer flex-ns justify-between">
         <div>
-          <h3  class="f3 mb0">Contact</h3>
+          <h3 class="f3 mb0">Contact</h3>
           <ul class="pl4 f4 lh-copy">
             {% for link in common.contact %}
             <li><a href="{{ link.link }}">{{ link.name }} 🔗</a></li>
@@ -44,7 +60,7 @@
           </ul>
         </div>
         <div>
-          <h3  class="f3 mb0">Resources</h3>
+          <h3 class="f3 mb0">Resources</h3>
           <ul class="pl4 f4 lh-copy">
             {% for link in common.resources %}
             <li><a href="{{ link.link }}">{{ link.name }} 🔗</a></li>
@@ -62,8 +78,5 @@
         </div>
       </div>
     </footer>
-
-
   </body>
 </html>
-

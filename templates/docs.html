@@ -1,10 +1,23 @@
-<h1>Docs</h1>
+{% extends "layout.html" %} {% block content %}
+<div class="cf">
+  <div class="fl w-100 w-30-ns pr5-ns sidebar">
+    <section class="mt5">
+      <h3 class="f2 vampiro">Docs Index</h3>
+      <ul class="pl4 lh-copy f4">
+        {% for site in sitemap.entries %}
+        <li>
+          <a href="{{ common.canonical_url }}/{{ site }}">{{ site }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <h3 class="f2 vampiro mb0">Chapters</h3>
+      {% include "_chapter_list.html" %}
+    </section>
+  </div>
+  <div class="fl w-100 w-70-ns">
+    <h1 class="f1 lh-title mt0">{{ name }}</h1>
 
-<div>
-  Sitemap:
-  {% for site in sitemap.entries %}
-  <li>{{ site }}</li>
-  {% endfor %}
+    <div class="f5 lh-copy">{{ content|safe }}</div>
+  </div>
 </div>
-
-{{ content|safe }}
+{% endblock %}
